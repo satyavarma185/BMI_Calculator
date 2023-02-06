@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script type="text/javascript">
+        function Calculate(){
+            var h = parseInt(document.getElementById("Height").value)/100;
+            var w = parseInt(document.getElementById("Weight").value);
+            var result = w / Math.pow(h, 2);
+            var Final = Math.round(result * 10) / 10;
+            document.getElementById("BMI").value = Final;
+
+            if(Final<18.5){
+                document.getElementById("Status").innerHTML="<span style='color:orangered;'>Under weight</span>";
+            }
+            else if(parseInt(Final)>=18.5 && parseInt(Final)<=25){
+                document.getElementById("Status").innerHTML="<span style='color:green;'>Healthy weight</span>";
+            }
+            else if(Final >25){
+                document.getElementById("Status").innerHTML="<span style='color:red;'>Over weight</span>";
+            }
+        }
+
+    </script>
+</head>
+<body class="container-fluid">
+    <h2 class="text-center mt-4">BMI CALCULATOR</h2>
+    <div class="mt-4 p-4 border border-dark border-2 rounded-4 w-50 m-auto">
+
+         <div class="row">
+            <div class="col">
+                <label for="Name" class="mb-2"><b>Name :</b></label>
+                <input type="text" id="Name" class="form-control">
+            </div>
+            <div class="col">
+                <label for="Age" class="mb-2"><b>Age :</b></label>
+                <input type="text" id="Age" class="form-control">
+            </div>
+         </div>
+
+         <div class="row mt-4">
+            <div class="col">
+                <label for="Height" class="mb-2"><b>Height :</b> ( in cm )</label>
+                <input type="text" class="form-control" id="Height">
+            </div>
+            <div class="col">
+                <label for="Weight" class="mb-2"><b>Weight :</b> ( in kg ) </label>
+                <input type="text" class="form-control" id="Weight">
+            </div>
+         </div>
+
+         <div class="mt-5 text-center d-flex justify-content-around">
+            <button type="button" id="Calculate" onclick="Calculate()" class="btn btn-dark">Calculate</button>
+            <button type="button" class="btn btn-dark ps-4 pe-4"><a href="/BMI_Calculator.html" class="text-decoration-none text-light">Reset</a></button>
+         </div>
+
+         <div class="row mt-4">
+            <div class="col">
+                <label for="BMI" class="mb-2"><b>BMI :</b></label>
+                <input type="text" name="BMI" id="BMI" class="form-control">
+            </div>
+            <div class="col">
+                <label for="BMI Status" class="mb-2"><b>BMI Status :</b></label>
+                <h4 id="Status" class="ps-3"></h4>
+            </div>
+           
+         </div>
+    </div>
+
+</body>
+</html>
